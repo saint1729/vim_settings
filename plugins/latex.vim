@@ -7,4 +7,5 @@ inoremap qqd \qquad
 
 
 let @e='a\begin{align}^M^M\end{align}^[ka'
-let @b='a\begin{}^M^M\end{}^[ka'
+" To compile and produce pdf output press, <F9>
+:nmap <F9> :w<CR> :!pdflatex %>GARBAGE.txt<CR>
