@@ -2,6 +2,9 @@
 This git repository has a collection of settings that I use for my vim editor.
 You can find special macros enabed for latex and gams currently.
 
+### General documentation
+* `:call Trail()`:	Deletes trailing whitespaces at the end of lines.
+
 ### Tex file documentation
 * `<F9>`:			Saves the file. Saves the current view. Compiles the file using pdflatex. Any log is not printed on the terminal, rather goes into GARBAGE.txt.
 * `:call Dtemp()`:	Deletes all temporary files belonging to current file, created as a result of pdflatex compilation.
