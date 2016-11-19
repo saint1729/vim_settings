@@ -1,6 +1,6 @@
 ### About
 This git repository has a collection of settings that I use for my vim editor.
-You can find special macros enabed for latex and gams currently. 
+You can find special macros enabed for latex and gams currently.
 
 ### Tex file documentation
 * `<F9>`:			Saves the file. Saves the current view. Compiles the file using pdflatex. Any log is not printed on the terminal, rather goes into GARBAGE.txt.
@@ -14,6 +14,7 @@ You can find special macros enabed for latex and gams currently.
 :set mouse=a
 :set nu
 :set ruler
+:set shiftwidth=4
 :syntax enable
 
 " Code folding settings
@@ -30,9 +31,14 @@ set laststatus=2
 " To enable Folding in GAMS .lst file
 :so ~/.vim/syntax/gamslist.vim
 
-" Loading any foldviewsettings for GAMS
+" Loading any special features for Latex
+au FileType tex,plaintex so ~/.vim/plugins/latex.vim
+
+" Loading any foldviewsettings
 au BUFREAD * loadview
 
-" Loading any special features for Latex
-au FileType tex,plaintex so ~/.vim/plugins/latex.vim 
+" Delete trailing space
+function! Trail()
+%s/\s\+$//g
+endfunction
 ```
