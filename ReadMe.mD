@@ -37,6 +37,9 @@ set laststatus=2
 " Loading any special features for Latex
 au FileType tex,plaintex so ~/.vim/plugins/latex.vim
 
+" Spell check for text files
+au FileType text setlocal spell
+
 " Loading any foldviewsettings
 au BUFREAD * loadview
 
