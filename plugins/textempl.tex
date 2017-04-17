@@ -1,20 +1,24 @@
 %!TEX spellcheck
 \documentclass[one column,a4paper]{article}
-\usepackage{amsmath,amssymb,amsthm,color,soul,enumerate,fullpage}
+\usepackage{amsmath,amssymb,amsthm,color,soul,enumerate,fullpage,natbib}
+
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+% Uncomment this for theorem styles
+% \theoremstyle{definition}
+% \newtheorem{ex}{Example}
+% \newtheorem{prop}{Proposition}
+% \newtheorem{theorem}{Theorem}
+% \newtheorem{Def}{Definition}
 
 
-\def \mytitle {Matrix Analysis and Linear Algebra: Lec 01}
+% Uncomment this to use Todo notes
+% \usepackage[colorinlistoftodos]{todonotes}
+% \newcommand{\sauleh}[1]{\todo[linecolor=blue,backgroundcolor=yellow!90,size=\small]{\textbf{Sauleh: }#1}}
+% \newcommand{\sri}[1]{\todo[noline,color=blue!30,size=\small]{#1}}
+% \newcommand{\remov}[1]{\todo[inline,color=red!40,size=\small]{#1}}
+% \newcommand{\add}[1]{\todo[inline,color=green!40,size=\small]{#1}}
 
-
-\theoremstyle{definition}
-\newtheorem{ex}{Example}
-\newtheorem{prop}{Proposition}
-\newtheorem{theorem}{Theorem}
-\newtheorem{Def}{Definition}
-
-\DeclareMathOperator*{\cov}  {\mathcal{C}ov}
-\DeclareMathOperator{\corr} {\mathcal{C}orr}
-\DeclareMathOperator* {\rank}{rank}
 
 %\usepackage{fancyhdr}
 %\pagestyle{fancy}
@@ -25,11 +29,14 @@
 
 
 %% Heading information
-\title{\mytitle}
+\title{Template}
 \date{}
 \author{Sriram Sankaranarayanan}
 
 \begin{document}
 \maketitle
+\tableofcontents
 
+\bibliographystyle{apalike}
+\bibliography{AllRef}
 \end{document}
