@@ -1,3 +1,5 @@
+colors/*
+!colors/Sriram.vim
 ./view/*
 .DS_Store
 *.m=

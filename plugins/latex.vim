@@ -79,7 +79,8 @@ inoremap <buffer> i<Tab>		<Esc>$o\item{}<Left>
 " Math mode "
 """""""""""""
 imap <buffer> m<Tab>			$$<Left>
-imap <buffer> M<Tab>			<CR>\begin{align}<CR><CR>\end{align}<UP><tab>
+imap <buffer> M<Tab>			<CR>\begin{align}<CR><CR>\end{align}<UP>
+imap <buffer> sub<Tab>			<CR>\begin{subequations}<CR>\begin{align}<CR><CR>\end{align}<CR>\end{subequations}<UP><UP>
 
 
 """""""""""
