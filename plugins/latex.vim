@@ -55,6 +55,15 @@ imap <buffer> V<Tab>			<CR>\begin{verbatim}<CR><CR>\end{verbatim}<UP>
 imap <buffer> _<Tab>			\underline{}<Left>
 nmap <buffer> <C-C>_         wbi\underline{<Esc>ea}<Esc>
 
+" Mathmodes
+imap <buffer> bb<Tab>			\mathbb{}<Left>
+imap <buffer> cal<Tab>			\mathcal{}<Left>
+
+" Brackets
+imap <buffer> lp<Tab>			\left ( \right )<Esc>2bi
+imap <buffer> lbr<Tab>			\left \lbrace \right \rbrace<Esc>4bi
+imap <buffer> lv<Tab>			\left \Vert \right \Vert<Esc>4bi
+
 
 
 """"""""""""""""
