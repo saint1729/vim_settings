@@ -1,4 +1,4 @@
-### About
+## About
 This git repository has a collection of settings that I use for my vim editor.
 You can find special macros enabed for latex and gams currently.
 
@@ -38,6 +38,7 @@ You can find special macros enabed for latex and gams currently.
 :set mouse=a
 :set nu
 :set ruler
+:colo Sriram
 :set shiftwidth=4
 :syntax enable
 
