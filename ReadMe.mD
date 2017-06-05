@@ -1,4 +1,4 @@
-### About
+## About
 This git repository has a collection of settings that I use for my vim editor.
 The settings have some useful mappings for both insert mode and the normal mode. The `.vimrc` file given below is commented to show each functionality. The `<leader>` key is currently set to `,`.
 You can find special macros enabed for latex and gams currently.
@@ -42,6 +42,7 @@ You can find special macros enabed for latex and gams currently.
 :colo Sriram
 :set nu
 :set ruler
+:colo Sriram
 :set shiftwidth=4
 :set tabstop=4
 :set expandtab
