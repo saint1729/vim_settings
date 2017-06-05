@@ -1,4 +1,4 @@
-" Operators in betwen
+" Operators in between
 inoremap <buffer> qe<Tab> \quad&=\quad
 inoremap <buffer> qle<Tab> \quad&\leq\quad
 inoremap <buffer> qge<Tab> \quad&\geq\quad
@@ -6,7 +6,7 @@ inoremap <buffer> qd<Tab> \quad
 inoremap <buffer> qqd<Tab> \qquad
 
 " To compile and produce pdf output press, <F9>
-:nmap <F9> :w<CR> :mkview<CR> :!pdflatex %>GARBAGE.txt<CR><CR> :!open %:r.pdf <cr><cr>
+:nnoremap <F9> :w<CR>:silent exec "!pdflatex %"<CR><C-l> :!open %:r.pdf <cr><cr>
 
 function! Dtemp()
 !rm %:r.log %:r.bbl %:r.out %:r.*xmk %:r.blg %:r.fls
@@ -23,6 +23,7 @@ let s:t = input( "Title? " )
 execute "normal 32G0f{lcw".s:t."\<Esc>39G"
 endfunction
 
+inoremap <C-j> <Esc>/<++><CR><Esc>cf>
 
 """""""""""""
 " Variables "
@@ -34,75 +35,104 @@ setlocal timeoutlen=300
 " Typefaces "
 """""""""""""
 " Bold
-imap <buffer> <C-C>b			\textbf{}<Left>
-nmap <buffer> <C-C>b			wbi\textbf{<Esc>ea}<Esc>
+inoremap <buffer> <C-C>b			\textbf{}<Left>
+vnoremap <buffer> <C-C>b			v`>a}<Esc>`<\textbf{<Esc>%
+nnoremap <buffer> <C-C>b			wbi\textbf{<Esc>ea}<Esc>
 
 " Italic
-imap <buffer> <C-C>i			\textit{}<Left>
-nmap <buffer> <C-C>i			wbi\textit{<Esc>ea}<Esc>
+inoremap <buffer> <C-C>i			\textit{}<Left>
+nnoremap <buffer> <C-C>i			wbi\textit{<Esc>ea}<Esc>
 
 " Smallcaps
-imap <buffer> <C-C>s			\textsc{}<Left>
-nmap <buffer> <C-C>s			wbi\textsc{<Esc>ea}<Esc>
+inoremap <buffer> <C-C>s			\textsc{}<Left>
+nnoremap <buffer> <C-C>s			wbi\textsc{<Esc>ea}<Esc>
 
 " Verbatim
-imap <buffer> <C-C>v			\verb++<Left>
-nmap <buffer> <C-C>v			wbi\verb+<Esc>ea+<Esc>
-imap <buffer> V<Tab>			<CR>\begin{verbatim}<CR><CR>\end{verbatim}<UP>
+inoremap <buffer> <C-C>v			\verb++<Left>
+nnoremap <buffer> <C-C>v			wbi\verb+<Esc>ea+<Esc>
+inoremap <buffer> V<Tab>			\begin{verbatim}<CR><CR>\end{verbatim}<UP>
 
 
 " Underline
-imap <buffer> _<Tab>			\underline{}<Left>
-nmap <buffer> <C-C>_         wbi\underline{<Esc>ea}<Esc>
+inoremap <buffer> _<Tab>			\underline{}<Left>
+nnoremap <buffer> <C-C>_         		wbi\underline{<Esc>ea}<Esc>
 
 " Mathmodes
-imap <buffer> bb<Tab>			\mathbb{}<Left>
-imap <buffer> cal<Tab>			\mathcal{}<Left>
+inoremap <buffer> bb<Tab>			\mathbb{}<Left>
+inoremap <buffer> cal<Tab>			\mathcal{}<Left>
 
 " Brackets
-imap <buffer> lp<Tab>			\left ( \right )<Esc>2bi
-imap <buffer> lbr<Tab>			\left \lbrace \right \rbrace<Esc>4bi
-imap <buffer> lv<Tab>			\left \Vert \right \Vert<Esc>4bi
+inoremap <buffer> lp<Tab>			\left ( \right )<Esc>2bi
+vnoremap <buffer> lp<Tab>			v`<i\left (<Esc>`> 5<Right> a\right )<Esc>
+vnoremap <buffer> (     			v`<i(<Esc>`>la)<Esc>
+inoremap <buffer> lbr<Tab>			\left \lbrace \right \rbrace<Esc>4bi
+inoremap <buffer> lv<Tab>			\left \Vert \right \Vert<Esc>4bi
 
+
+" Sections and subsections
+inoremap <buffer> sec<Tab>          \section{}<Esc>i
+inoremap <buffer> sub<Tab>          \subsection{}<Esc>i
+inoremap <buffer> par<Tab>          \paragraph{}<Esc>i
+
+" Fraction
+inoremap <buffer> frac<Tab>         \frac{<++>}{<++>}<Esc>2?<++><CR>cf>
 
 
 """"""""""""""""
 " Enumerations "
 """"""""""""""""
-imap <buffer> I<Tab>			<CR>\begin{itemize}<CR><CR>\end{itemize}<UP><tab>
-imap <buffer> E<Tab>			<CR>\begin{enumerate}<CR><CR>\end{enumerate}<UP><tab>
-inoremap <buffer> i<Tab>		<Esc>$o\item{}<Left>
+inoremap <buffer> I<Tab>			\begin{itemize}<CR><CR>\end{itemize}<UP><tab>
+inoremap <buffer> E<Tab>			\begin{enumerate}<CR><CR>\end{enumerate}<UP><tab>
+inoremap <buffer> i<Tab>		<Esc>$a\item{}<Left>
 
 
 
 """""""""""""
 " Math mode "
 """""""""""""
-imap <buffer> m<Tab>			$$<Left>
-imap <buffer> M<Tab>			<CR>\begin{align}<CR><CR>\end{align}<UP>
-imap <buffer> sub<Tab>			<CR>\begin{subequations}<CR>\begin{align}<CR><CR>\end{align}<CR>\end{subequations}<UP><UP>
+inoremap <buffer> m<Tab>			$$<Left>
+inoremap <buffer> $     			$$<Left>
+vnoremap <buffer> $                 v`>a$<Esc>`<i$<Esc>
+inoremap <buffer> M<Tab>			\begin{align}<CR><CR>\end{align}<UP>
+inoremap <buffer> sub<Tab>			\begin{subequations}<CR>\begin{align}<CR><CR>\end{align}<CR>\end{subequations}<UP><UP>
 
 
 """""""""""
 " Tabular "
 """""""""""
-imap <buffer> <C-C>T			<CR>\begin{tabular}{}<CR>\end{tabular}<UP><Esc>$i
-imap <buffer> -<Tab>			\hline<CR>
+inoremap <buffer> <C-C>T			\begin{tabular}{}<CR>\end{tabular}<UP><Esc>$i
+inoremap <buffer> -<Tab>			\hline<CR>
+
+inoremap <buffer> table<Tab>        <Esc>:call InsertTable()<CR>
+
+function! InsertTable()
+    let row = input( "Number of rows? ")
+    let col = input( "Number of cols? ")
+    execute "normal o\\begin{tabular}{|\<Esc>".col."ac|\<Esc>a}\<CR>\\hline\<CR>\<Esc>".col."a<++>\& \<Esc>xxa\\\\ \<Esc>ddk".row."pk".row."jo\\hline\<CR>\\end{tabular}\<Esc>".row."kkk\<Up>a"
+endfunction
+
 
 
 
 """"""""""""
 " Graphics "
 """"""""""""
-imap <buffer> *<Tab>			\includegraphics[width=cm]{}<Esc>F=a
+inoremap <buffer> ffig<Tab>         \includegraphics[width=\textwidth]{<++>}<CR>\caption{<++>}\label{fig:<++>}<CR>
+" Just add includegraphics, caption and label
+imap     <buffer> *<Tab>			jkmziffig<Tab>`z<C-j>
+" Add a figure environment
+imap     <buffer> fig<Tab>          jkmzi\begin{figure}[t]<CR>\centering<CR>\end{figure}jk`za<C-j>
+" Add a subfigure environment with 2 subfigures
+imap     <buffer> sfig<Tab>         jkmzi\begin{figure}[t]<CR>\centering<Cr>\begin{subfigure}[b]{0.45\textwidth}<CR>ffig<Tab>\end{subfigure}<CR>\begin{subfigure}[b]{0.45\textwidth}<CR>ffig<Tab>\end{subfigure}<CR>\caption{<++>}\label{fig:<++>}<CR>\end{figure}jk`za<C-j>
+
 
 
 """""""""""""""""
 " Double quotes "
 """""""""""""""""
-imap <buffer> "				``''<Left><Left>
+inoremap <buffer> "				``''<Left><Left>
 inoremap <buffer> \"			"
-nmap <buffer> <C-C>"			wbi``<Esc>ea''<Esc>
+nnoremap <buffer> <C-C>"			wbi``<Esc>ea''<Esc>
 
 
 
@@ -110,19 +140,20 @@ nmap <buffer> <C-C>"			wbi``<Esc>ea''<Esc>
 """""""""""""""""""
 " New environment "
 """""""""""""""""""
-imap <buffer> N<Tab>			<Esc>:call InsertEnv()<CR>
+inoremap <buffer> N<Tab>			<Esc>:call InsertEnv()<CR>
 
 function! InsertEnv() 
 	let s:t = input( "Environment? " )
-	execute "normal o\\begin{".s:t."}\<CR>\<CR>\\end{".s:t."}\<UP>\<Esc>"
+	execute "normal o\\begin{".s:t."}\<CR>\<CR>\\end{".s:t."}\<UP>"
 endfunction
+
 
 
 """"""""
 " Misc "
 """"""""
-vmap <buffer> %			:s/^/% <CR>:noh<CR>
-imap <buffer> <Del><Tab>		<Esc>F{d%a{}<Left>
+vnoremap <buffer> <leader>%			:s/^/% <CR>:noh<CR>
+inoremap <buffer> <Del><Tab>		<Esc>F{d%a{}<Left>
 
 
 """"""""""""
@@ -130,13 +161,13 @@ imap <buffer> <Del><Tab>		<Esc>F{d%a{}<Left>
 """"""""""""
 
 " In/out of braces
-imap <buffer> }<Tab>		<Esc>f}a<space>
-imap <buffer> {<Tab>		<Esc>F{bi
+inoremap <buffer> }<Tab>		<Esc>f}a<space>
+inoremap <buffer> {<Tab>		<Esc>F{bi
 
 " In/out of environments
-imap <buffer> ]<Tab>		<Esc>/\\end{.*}<cr>f}:noh<cr>a
-map <buffer> ]				/\\end{.*}<cr>f}:noh<cr>
+inoremap <buffer> ]<Tab>		<Esc>/\\end{.*}<cr>f}:noh<cr>a
+noremap <buffer> ]				/\\end{.*}<cr>f}:noh<cr>
 
-imap <buffer> [<Tab>		<Esc>?\\begin{.*}<cr>:noh<cr>i
+inoremap <buffer> [<Tab>		<Esc>?\\begin{.*}<cr>:noh<cr>i
 map <buffer> [				?\\begin{.*}<cr>:noh<cr>
 

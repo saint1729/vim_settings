@@ -14,7 +14,7 @@ hi VisualNOS guifg=#8080ff guibg=fg gui=reverse,underline ctermfg=lightblue cter
 
 hi Todo guifg=#d14a14 guibg=#1248d1 ctermfg=red	ctermbg=darkblue
 
-hi Search guifg=#90fff0 guibg=#2050d0	ctermfg=white ctermbg=darkblue cterm=underline term=underline
+hi Search guifg=#90fff0 guibg=#2050d0	ctermfg=blue ctermbg=green cterm=underline term=underline
 
 hi IncSearch    guifg=#b0ffff guibg=#2050d0 ctermfg=173
 
