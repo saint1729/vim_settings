@@ -33,16 +33,45 @@ You can find special macros enabed for latex and gams currently.
 * `Pa<Tab>`:	Parameters
 * `E<Tab>`:		Equations
 
-
-
 ### ~/.vimrc File contents
-
 ```VimL
+:set nocompatible
+:filetype off
+
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'vim-latex/vim-latex'
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+filetype plugin on
+let g:tex_flavor='latex'
+
+
+
+
+
+
+if has("gui_running")
+    colo breeze
+else
+    colo Sriram
+endif
+
+
+
 :set mouse=a
-:colo Sriram
 :set nu
 :set ruler
-:colo Sriram
 :set shiftwidth=4
 :set tabstop=4
 :set expandtab
@@ -114,3 +143,4 @@ inoremap <leader>O <Esc>mzO<Esc>`za
 " Open new line above or below in the normal mode WITHOUT exiting normal mode <leader>+o/O
 nnoremap <leader>o mzo<Esc>`z
 nnoremap <leader>O mzO<Esc>`z
+```
