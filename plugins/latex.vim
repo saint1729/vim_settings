@@ -1,12 +1,16 @@
+" To have Ctrl+N fill labels with ':' in them
+set iskeyword+=:
+let g:Tex_ViewRule_pdf = 'open -a Skim'
+
 " Operators in between
-inoremap <buffer> qe<Tab> \quad&=\quad
+inoremap <buffer> qe<Tab> \quad&<Esc>mza<++>\quad<++><Esc>`z
 inoremap <buffer> qle<Tab> \quad&\leq\quad
 inoremap <buffer> qge<Tab> \quad&\geq\quad
 inoremap <buffer> qd<Tab> \quad
 inoremap <buffer> qqd<Tab> \qquad
 
 " To compile and produce pdf output press, <F9>
-:nnoremap <F9> :w<CR>:silent exec "!pdflatex %"<CR><C-l> :!open %:r.pdf <cr><cr>
+" :nnoremap <F9> :w<CR>:silent exec "!pdflatex %"<CR><C-l> :!open %:r.pdf <cr><cr>
 
 function! Dtemp()
 !rm %:r.log %:r.bbl %:r.out %:r.*xmk %:r.blg %:r.fls
@@ -23,7 +27,7 @@ let s:t = input( "Title? " )
 execute "normal 32G0f{lcw".s:t."\<Esc>39G"
 endfunction
 
-inoremap <C-j> <Esc>/<++><CR><Esc>cf>
+inoremap <C-j> <Esc>/<++><CR>cf>
 
 """""""""""""
 " Variables "
@@ -62,11 +66,11 @@ inoremap <buffer> bb<Tab>			\mathbb{}<Left>
 inoremap <buffer> cal<Tab>			\mathcal{}<Left>
 
 " Brackets
-inoremap <buffer> lp<Tab>			\left ( \right )<Esc>2bi
+inoremap <buffer> lp<Tab>			\left ( \right )<++><Esc>3bi
 vnoremap <buffer> lp<Tab>			v`<i\left (<Esc>`> 5<Right> a\right )<Esc>
 vnoremap <buffer> (     			v`<i(<Esc>`>la)<Esc>
-inoremap <buffer> lbr<Tab>			\left \lbrace \right \rbrace<Esc>4bi
-inoremap <buffer> lv<Tab>			\left \Vert \right \Vert<Esc>4bi
+inoremap <buffer> lbr<Tab>			\left \lbrace \right \rbrace<++><Esc>5bi
+inoremap <buffer> lv<Tab>			\left \Vert \right \Vert<++><Esc>5bi
 
 
 " Sections and subsections
@@ -83,7 +87,7 @@ inoremap <buffer> frac<Tab>         \frac{<++>}{<++>}<Esc>2?<++><CR>cf>
 """"""""""""""""
 inoremap <buffer> I<Tab>			\begin{itemize}<CR><CR>\end{itemize}<UP><tab>
 inoremap <buffer> E<Tab>			\begin{enumerate}<CR><CR>\end{enumerate}<UP><tab>
-inoremap <buffer> i<Tab>		<Esc>$a\item{}<Left>
+inoremap <buffer> i<Tab>		    <Esc>$a\item{}<Left>
 
 
 
@@ -92,7 +96,7 @@ inoremap <buffer> i<Tab>		<Esc>$a\item{}<Left>
 """""""""""""
 inoremap <buffer> m<Tab>			$$<Left>
 inoremap <buffer> $     			$$<Left>
-vnoremap <buffer> $                 v`>a$<Esc>`<i$<Esc>
+vnoremap <buffer> $$                v`>a$<Esc>`<i$<Esc>
 inoremap <buffer> M<Tab>			\begin{align}<CR><CR>\end{align}<UP>
 inoremap <buffer> sub<Tab>			\begin{subequations}<CR>\begin{align}<CR><CR>\end{align}<CR>\end{subequations}<UP><UP>
 
@@ -130,9 +134,9 @@ imap     <buffer> sfig<Tab>         jkmzi\begin{figure}[t]<CR>\centering<Cr>\beg
 """""""""""""""""
 " Double quotes "
 """""""""""""""""
-inoremap <buffer> "				``''<Left><Left>
-inoremap <buffer> \"			"
-nnoremap <buffer> <C-C>"			wbi``<Esc>ea''<Esc>
+" inoremap <buffer> "				``''<Left><Left>
+" inoremap <buffer> \"			"
+" nnoremap <buffer> <C-C>"			wbi``<Esc>ea''<Esc>
 
 
 
@@ -152,7 +156,7 @@ endfunction
 """"""""
 " Misc "
 """"""""
-vnoremap <buffer> <leader>%			:s/^/% <CR>:noh<CR>
+" vnoremap <buffer> <leader>%			:s/^/% <CR>:noh<CR>
 inoremap <buffer> <Del><Tab>		<Esc>F{d%a{}<Left>
 
 
@@ -161,13 +165,13 @@ inoremap <buffer> <Del><Tab>		<Esc>F{d%a{}<Left>
 """"""""""""
 
 " In/out of braces
-inoremap <buffer> }<Tab>		<Esc>f}a<space>
-inoremap <buffer> {<Tab>		<Esc>F{bi
+" inoremap <buffer> }<Tab>		<Esc>f}a<space>
+" inoremap <buffer> {<Tab>		<Esc>F{bi
 
 " In/out of environments
-inoremap <buffer> ]<Tab>		<Esc>/\\end{.*}<cr>f}:noh<cr>a
-noremap <buffer> ]				/\\end{.*}<cr>f}:noh<cr>
+" inoremap <buffer> ]<Tab>		<Esc>/\\end{.*}<cr>f}:noh<cr>a
+" noremap <buffer> ]				/\\end{.*}<cr>f}:noh<cr>
 
-inoremap <buffer> [<Tab>		<Esc>?\\begin{.*}<cr>:noh<cr>i
-map <buffer> [				?\\begin{.*}<cr>:noh<cr>
+" inoremap <buffer> [<Tab>		<Esc>?\\begin{.*}<cr>:noh<cr>i
+" map <buffer> [				?\\begin{.*}<cr>:noh<cr>
 

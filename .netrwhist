@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/sriram/.vim/colors'
+let g:netrw_dirhist_2='/Users/sriram/.vim'
+let g:netrw_dirhist_3='/Users/sriram/.vim/plugins'
+let g:netrw_dirhist_4='/Users/sriram/.vim'
+let g:netrw_dirhist_5='/Users/sriram'
+let g:netrw_dirhist_6='/Users/sriram/Documents/Personal/code/COINsand/Cbc/Cbc'
