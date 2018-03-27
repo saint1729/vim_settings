@@ -1,8 +1,22 @@
 %!TEX spellcheck
 \documentclass[one column,a4paper]{article}
-\usepackage{amsmath,amssymb,amsthm,color,soul,enumerate,fullpage,natbib,authblk}
+\usepackage{amsmath,amssymb,amsthm,color,enumerate,fullpage}
+\usepackage[noblocks,auth-sc]{authblk}
+\usepackage[sort&compress]{natbib}
 
+
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
 \renewcommand{\qedsymbol}{$\blacksquare$}
+
+% Uncomment this for Track changes
+% \usepackage[authormarkup=footnote]{changes}
+% \definechangesauthor[color=blue]{Sriram}
+% \definechangesauthor[color=red]{CoAuth}
+% \newcommand{\sriAdd}[1]{\added[id=Sriram]{#1}}
+% \newcommand{\sriDel}[1]{\deleted[id=Sriram]{#1}}
+% \newcommand{\CoAdd}[1]{\added[id=CoAuth]{#1}}
+% \newcommand{\CoDel}[1]{\deleted[id=CoAuth]{#1}}
+
 
 % Uncomment this for theorem styles
 % \theoremstyle{definition}
@@ -10,34 +24,39 @@
 % \newtheorem{prop}{Proposition}
 % \newtheorem{theorem}{Theorem}
 % \newtheorem{Def}{Definition}
+\allowdisplaybreaks
 
 
-% Uncomment this to use Todo notes
-% \usepackage[colorinlistoftodos]{todonotes}
-% \newcommand{\sauleh}[1]{\todo[linecolor=blue,backgroundcolor=yellow!90,size=\small]{\textbf{Sauleh: }#1}}
-% \newcommand{\sri}[1]{\todo[noline,color=blue!30,size=\small]{#1}}
-% \newcommand{\remov}[1]{\todo[inline,color=red!40,size=\small]{#1}}
-% \newcommand{\add}[1]{\todo[inline,color=green!40,size=\small]{#1}}
+% Operators that might be of use - Uncomment as needed
+% \newcommand{\conv}{\operatorname{conv}}
+% \newcommand{\intr}{\operatorname{int}}
+% \newcommand{\relintr}{\operatorname{relint}}
+% \newcommand{\relint}{\relintr}
+% \newcommand{\rec}{\operatorname{rec}}
+% \newcommand{\lin}{\operatorname{lin}}
+% \newcommand{\bd}{\operatorname{bd}}
+% \newcommand{\cl}{\operatorname{cl}}
+% \newcommand{\proj}{\operatorname{proj}}
+% \newcommand{\sgn}{\operatorname{sgn}}
+% \newcommand{\cone}{\operatorname{cone}}
 
-
-
-%\usepackage{fancyhdr}
-%\pagestyle{fancy}
-%
-%\lhead{}
-%\cfoot{\thepage}
-
+% \newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+% \newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
 
 
 %% Heading information
-\title{Template}
+\renewcommand\Affilfont{\it\small}
+\title{\Huge Some Title}
+\author[1]{Sriram Sankaranarayanan}
+\author[2]{Somebody Somename}
+\affil[1]{Department of Civil Engineering, Johns Hopkins University}
+\affil[1]{Department of something, Some University}
 \date{}
-\author{Sriram Sankaranarayanan}
 
 \begin{document}
 \maketitle
-\tableofcontents
 
-\bibliographystyle{apalike}
-\bibliography{library}
+Test
+% \bibliographystyle{apalike}
+% \bibliography{library}
 \end{document}

@@ -24,7 +24,7 @@ endfunction
 function! Tex()
 0r ~/.vim/plugins/textempl.tex
 let s:t = input( "Title? " )
-execute "normal 32G0f{lcw".s:t."\<Esc>39G"
+execute "normal 49G0f{lct}".s:t."\<Esc>58G"
 endfunction
 
 inoremap <C-j> <Esc>/<++><CR>cf>
